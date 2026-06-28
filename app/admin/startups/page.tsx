@@ -10,15 +10,29 @@ async function getData() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
-  const { data: profile } = await supabase.from("profiles").select("role, full_name").eq("id", user.id).single() as any;
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role, full_name")
+    .eq("id", user.id)
+    .single() as any;
+
   if (!profile || (profile.role !== "super_admin" && profile.role !== "reviewer")) return null;
 
-  const { data: startups } = await supabase
+  const { data: startupsRaw } = await supabase
     .from("startups")
-    .select("*, profiles!startups_user_id_fkey(id, email, full_name)")
+    .select("*")
     .order("created_at", { ascending: false });
 
-  return { profile, startups: startups || [] };
+  const startups = await Promise.all((startupsRaw || []).map(async (startup: any) => {
+    const { data: profileData } = await supabase
+      .from("profiles")
+      .select("id, email, full_name")
+      .eq("id", startup.user_id)
+      .single() as any;
+    return { ...startup, profiles: profileData || null };
+  }));
+
+  return { profile, startups };
 }
 
 export default async function AdminStartupsPage() {
