@@ -2,8 +2,10 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import DashboardLayout from "@/components/dashboard/dashboard-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ActivityChart, StatusPieChart, COLORS } from "@/components/admin/admin-charts";
+import { ActivityChart, StatusPieChart } from "@/components/admin/admin-charts";
 import { Building2, Users, DollarSign, Briefcase, ArrowUpRight, Clock } from "lucide-react";
+
+const COLORS = ["#C9A961", "#4F5BFF", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6", "#06B6D4"];
 
 export const revalidate = 60;
 
