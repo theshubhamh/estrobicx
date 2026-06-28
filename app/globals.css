@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 220 30% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 30% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 42 50% 58%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 235 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 235 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 42 50% 58% / 0.15;
+    --input: 220 15% 12%;
+    --ring: 42 50% 58%;
+    --radius: 0.5rem;
+    --chart-1: 42 50% 58%;
+    --chart-2: 235 100% 65%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 30 80% 55%;
+    --chart-5: 0 60% 50%;
+  }
+
+  body {
+    @apply bg-black text-white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[rgba(201,169,97,0.15)];
+  }
+}
+
+@layer utilities {
+  .card-glow {
+    box-shadow: 0 0 0 1px rgba(201,169,97,0.1), 0 0 40px rgba(79,91,255,0.05);
+  }
+
+  .text-gold {
+    color: #C9A961;
+  }
+
+  .bg-gold {
+    background-color: #C9A961;
+  }
+
+  .border-gold {
+    border-color: rgba(201,169,97,0.15);
+  }
+
+  .bg-dark-navy {
+    background-color: #0A0F1C;
+  }
+
+  .bg-elevation {
+    background-color: #14181F;
+  }
+
+  .text-dim {
+    color: #9CA3AF;
+  }
+
+  .text-muted {
+    color: #6B7280;
+  }
+
+  .label-style {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+  }
+
+  .pill-active {
+    @apply bg-indigo-500 text-white border border-indigo-400;
+  }
+
+  .pill-inactive {
+    @apply bg-white/5 text-gray-400 border border-white/10;
+  }
+
+  .input-dark {
+    @apply bg-black/50 border border-white/10 text-white placeholder:text-gray-600 focus:border-[#C9A961] focus:ring-0 focus:outline-none;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-500 hover:bg-indigo-600 text-white transition-all;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(79,91,255,0.3);
+  }
+
+  .btn-gold {
+    @apply bg-[#C9A961] hover:bg-[#B8984D] text-black transition-all;
+  }
+
+  .btn-outline {
+    @apply border border-white/20 hover:border-[#C9A961] hover:text-[#C9A961] text-white transition-all;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0F1C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2030;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3040;
+}
+
+/* Recharts custom */
+.recharts-text {
+  fill: #9CA3AF !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255,255,255,0.05) !important;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+/* Custom scrollbar for tables */
+.table-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* Toast styles */
+[data-sonner-toast] {
+  background: #0A0F1C !important;
+  border: 1px solid rgba(201,169,97,0.15) !important;
+  color: white !important;
+}
