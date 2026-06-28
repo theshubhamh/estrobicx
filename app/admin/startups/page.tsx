@@ -15,7 +15,7 @@ async function getData() {
 
   const { data: startups } = await supabase
     .from("startups")
-    .select("*, profiles(user_id, email, full_name)")
+    .select("*, profiles!startups_user_id_fkey(id, email, full_name)")
     .order("created_at", { ascending: false });
 
   return { profile, startups: startups || [] };
